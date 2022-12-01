@@ -1,10 +1,14 @@
 [package]
 name = "day01"
-version = "0.1.0"
+version = "0.0.0"
 edition = "2021"
+publish = false
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[lib]
+crate-type = ["cdylib"]
 
 [dependencies]
-itertools = "0.10.5"
-roesti = { git = "https://github.com/Georg-code/roeschti" }
+soroban-sdk = "0.2.1"
+
+[dev_dependencies]
+soroban-sdk = { version = "0.2.1", features = ["testutils"] }
