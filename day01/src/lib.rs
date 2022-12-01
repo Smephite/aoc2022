@@ -63,4 +63,40 @@ impl Day01 {
 
         (top_3.0, top_3.0 + top_3.1 + top_3.2)
     }
+
+    // the input must end in 0x0A0A !!
+    pub fn efficient(_: Env, inp: Bytes) -> (u32, u32) {
+        let mut elf_tmp = 0u32;
+        let mut line_tmp = 0u32;
+        let mut first = 0u32;
+        let mut scnd = 0u32;
+        let mut third = 0u32;
+
+
+        for char in inp {
+            if char == 0x0a {
+                elf_tmp += line_tmp;
+                // new line -> new number
+                if line_tmp == 0 {
+                    // two new lines in a row -> new elf
+                    if elf_tmp > first {
+                        third = scnd;
+                        scnd = first;
+                        first = elf_tmp;
+                    } else if elf_tmp > scnd {
+                        third = scnd;
+                        scnd = elf_tmp;
+                    } else if elf_tmp > third {
+                        third = elf_tmp;
+                    }
+                    elf_tmp = 0;
+                }
+                line_tmp = 0;
+            } else {
+                line_tmp = line_tmp*10 +  ((char as u32)-0x30);
+            }
+        }
+
+        (first, first + scnd + third)
+    }
 }
