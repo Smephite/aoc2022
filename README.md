@@ -1,0 +1,2 @@
+# Advent of Code 2022
+This repository contains the solution of [Advend of Code 2022](https://adventofcode.com/2022) written in the Swissgerman [Rust](https://www.rust-lang.org/) dialect [Röschti/Rösti](https://github.com/Georg-code/roeschti)
