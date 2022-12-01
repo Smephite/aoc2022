@@ -64,7 +64,6 @@ impl Day01 {
         (top_3.0, top_3.0 + top_3.1 + top_3.2)
     }
 
-    // the input must end in 0x0A0A !!
     pub fn efficient(_: Env, inp: Bytes) -> (u32, u32) {
         let mut elf_tmp = 0u32;
         let mut line_tmp = 0u32;
@@ -72,6 +71,10 @@ impl Day01 {
         let mut scnd = 0u32;
         let mut third = 0u32;
 
+        // force to end with two new lines; 
+        let mut inp = inp;
+        inp.push(0x0a);
+        inp.push(0x0a);
 
         for char in inp {
             if char == 0x0a {
